@@ -9,7 +9,9 @@ BLUE = "\033[94m"
 GREEN = "\033[92m"
 RESET = "\033[0m"
 
-spinner_frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+name = "jarvis"
+
+spinner_frames = [".    ", "..   ", "...  ", ".... ", "....."]
 
 model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -24,11 +26,11 @@ model.eval()
 messages = [
     {
         "role": "system",
-        "content": "You are a friendly chatbot who always calls the user sir. Your name is Jarvis.",
+        "content": "You are a friendly chatbot who always calls the user sir. Your name is " + name + ".",
     },
     {
         "role": "assistant",
-        "content": "I am a friendly chatbot named Jarvis.",
+        "content": "I am a friendly chatbot named "+ name +".",
     }
 ]
 
@@ -78,7 +80,7 @@ try:
         outputs = output_container['outputs']
         response = tokenizer.decode(outputs[0], skip_special_tokens=True).split("|>\n")[-1].strip()
 
-        slow_print(f"{GREEN}jarvis: {response}{RESET}", speed=0.05)
+        slow_print(f"{GREEN}"+ name +": {response}{RESET}", speed=0.05)
 
         messages.append({"role": "assistant", "content": response})
 except KeyboardInterrupt:
