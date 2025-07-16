@@ -43,7 +43,7 @@ def slow_print(text, speed=0.05):
 
 print("Fastllama online")
 
-print("\npress CTRL + C")
+print("\nPress CTRL + C to exit.")
 
 try:
     while True:
