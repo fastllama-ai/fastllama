@@ -29,7 +29,7 @@ messages = [
         "content": "You are a friendly chatbot who always calls the user sir. Your name is " + name + ".",
     },
     {
-        "role": "assistant",
+        "role": name,
         "content": "I am a friendly chatbot named "+ name +".",
     }
 ]
@@ -80,9 +80,9 @@ try:
         outputs = output_container['outputs']
         response = tokenizer.decode(outputs[0], skip_special_tokens=True).split("|>\n")[-1].strip()
 
-        slow_print(f"{GREEN}"+ name +": {response}{RESET}", speed=0.05)
+        slow_print(f"{GREEN}" + name + f": {response}{RESET}", speed=0.05)
 
-        messages.append({"role": "assistant", "content": response})
+        messages.append({"role": name, "content": response})
 except KeyboardInterrupt:
     print(f"\n{BLUE}Exiting FastLlama.{RESET}")
     sys.exit(0)
