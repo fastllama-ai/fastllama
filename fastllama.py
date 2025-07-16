@@ -41,6 +41,8 @@ def slow_print(text, speed=0.05):
 
 print("Fastllama online")
 
+print("\npress CTRL + C")
+
 try:
     while True:
         user_input = input(f"{BLUE}user: {RESET}")
